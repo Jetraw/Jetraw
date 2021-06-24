@@ -1,12 +1,36 @@
 # Jetraw Image Compression
 This repository hosts releases of the Jetraw image compression software. For more information about Jetraw, please visit https://jetraw.com/.
 
+# Table of contents
+- [Jetraw Image Compression](#jetraw-image-compression)
+- [Table of contents](#table-of-contents)
+- [Quick start](#quick-start)
+  - [Jetraw UI](#jetraw-ui)
+    - [Windows installation](#windows-installation)
+    - [macOS installation](#macos-installation)
+    - [Setup and compression](#setup-and-compression)
+  - [Linux](#linux)
+- [Device identifiers](#device-identifiers)
+- [Command line utilities](#command-line-utilities)
+  - [Noise replacement with DPCore](#noise-replacement-with-dpcore)
+    - [Displaying identifiers](#displaying-identifiers)
+    - [Performing noise replacement](#performing-noise-replacement)
+  - [Compression and decompression with Jetraw](#compression-and-decompression-with-jetraw)
+  - [Convenient use of the command lines on macOS](#convenient-use-of-the-command-lines-on-macos)
+  - [Convenient use of the command lines on Linux](#convenient-use-of-the-command-lines-on-linux)
+- [Development libraries](#development-libraries)
+- [Wrappers and plugins](#wrappers-and-plugins)
+- [Configuration files](#configuration-files)
+  - [Windows](#windows)
+  - [macOS](#macos)
+  - [Linux](#linux-1)
+  - [Contact](#contact)
 # Quick start
 
 Jetraw can be used free of charge for decompression. You can try compression on a sample set of microscopy images by applying for the free testing kit at https://jetraw.com/downloads/software.
 
 ## Jetraw UI
-On Windows and macOS, Jetraw comes with a UI, where you can easily enter and check your license data, install and view device calibrations, and prepare, compress and decompress TIFF files.
+On Windows and macOS, Jetraw comes with a UI, where you can easily enter and check your license data, install and view device calibrations, and compress / decompress TIFF files.
 
 ![Screenshot of JetrawUI on macOS](jetraw-ui_macos.png)
 
