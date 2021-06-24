@@ -24,7 +24,7 @@ This repository hosts releases of the Jetraw image compression software. For mor
   - [Windows](#windows)
   - [macOS](#macos)
   - [Linux](#linux-1)
-  - [Contact](#contact)
+- [Contact](#contact)
 # Quick start
 
 Jetraw can be used free of charge for decompression. You can try compression on a sample set of microscopy images by applying for the free testing kit at https://jetraw.com/downloads/software.
@@ -140,10 +140,10 @@ Jetraw uses a small number of configuration files at standard locations.
 - `%APPDATA%\dpcore` contains camera calibration data.
 
 ## macOS
-As for Windows, except that `%APPDATA$` should be replaced by `~/Library/Application Support/`
+As for Windows, except that `%APPDATA%` should be replaced by `~/Library/Application Support/`
 
 ## Linux
-As for Windows, except that `%APPDATA$` should be replaced by `~/.config/`
+As for Windows, except that `%APPDATA%` should be replaced by `~/.config/`
 
-## Contact
+# Contact
 Feel free to use the [issues section](https://github.com/Jetraw/Jetraw/issues) to report bugs or request new features. You can also ask questions and give comments by visiting the [discussions](https://github.com/Jetraw/Jetraw/discussions), or following the contact information at https://jetraw.com.
