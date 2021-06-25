@@ -69,7 +69,7 @@ In general, Jetraw compression consists of two steps.
 1. Accurate noise replacement with the help of camera calibration data provided through an *identifier*.
 2. Lossless compression of the noise-replaced data.
 
-The noise-replacement need only be performed once, after which lossless compression and decompression can be performed any number of times.
+The noise-replacement needs only to be performed once, after which lossless compression and decompression can be performed any number of times.
 
 In JetrawUI, noise-replacement is done automatically if necessary. When using the command line, two separate commands offer more fine-grained control.
 
@@ -90,7 +90,7 @@ The minimal command to perform noise replacement is
 ```
 dpcore [-c] -d <destination> -i <identifier> <sources>
 ```
-The argument are as follows:
+The arguments are as follows:
 - `-c` is optional and will apply compression to the noise-replaced files.
 - `-d <destination>` specifies the destination directory. The directory will be created if it doesn't exist.
 - `<sources>` are source files (extension must be `.tif` or `.tiff`) or directories containing those files.
@@ -111,17 +111,33 @@ jetraw decompress -d decompressed c1.p.tif
 ## Convenient use of the command lines on macOS
 On macOS, the command lines are bundled with the App and can be found at `/Applications/Jetraw\ UI.app/Contents/jetraw/bin/`. To conveniently run them from any other directory, you have two options.
 
-1. Create symbolic links. This method is recommended, because it is intuitive and permanent. Open a terminal and run the following commands
+1. Give macOS an additional location to look for executables by adding the Jetraw directory to the `PATH` environment variable. Open a terminal and run
     ```
-    ln -s "/Application/Jetraw UI.app/Contents/jetraw/bin/jetraw" /usr/local/bin/
-    ln -s "/Application/Jetraw UI.app/Contents/jetraw/bin/dpcore" /usr/local/bin/
+    export PATH="$PATH:/Applications/Jetraw UI.app/Contents/jetraw/bin"
+    ```
+    You will have to re-run the command whenever you open a new terminal. To avoid this, you can add the above line to the file `.zshrc` (`.bashrc` on older systems) in your home directory.
+
+2. This method is slightly more advanced and may require super-user privileges on your system. It relies on creating symbolic links in the directory `/usr/local/bin`, which is a standard location for user-installed executables. However, this directory may not exist, or it may not be writable. Let's check that first. Open a terminal and run the following commands
+    ```
+    stat -f "%N => OWNER:%Su (%Sg), PERMISSIONS:%Sp" /usr/local/bin
     ```
 
-2. Give macOS an additional location to look for executables by adding the Jetraw directory to the `PATH` environment variable. Open a terminal and run
+    If the directory does not exist, it can be created,
     ```
-    export PATH="$PATH:/Application/Jetraw UI.app/Contents/jetraw/bin"
+    sudo mkdir /usr/local/bin
     ```
-    You will also have to re-run the command when you open a new terminal. To avoid this, you can add the above line to the file `.zshrc` (`.bashrc` on older systems) in your home directory.
+
+    If the output of the `stat` command does not show you as the owner of the directory, you can either take ownership with the command
+    ```
+    sudo chown $USER /usr/local/bin
+    ```
+    or you can prefix the following commands with `sudo`.
+
+    The last step is to create the symbolic links,
+    ```
+    ln -s "/Applications/Jetraw UI.app/Contents/jetraw/bin/jetraw" /usr/local/bin/
+    ln -s "/Applications/Jetraw UI.app/Contents/jetraw/bin/dpcore" /usr/local/bin/
+    ```
 
 ## Convenient use of the command lines on Linux
 Similar to macOS, Linux usually must be told where to look for the command line utilities, because they are not installed in the system's default location. What works for macOS should also work on Linux, provided that you provide the correct location for Jetraw, namely where you unpacked the downloaded `.tar.gz` file.
