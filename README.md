@@ -39,6 +39,8 @@ To get started, you can follow the following steps.
 1. Download the Windows installer (MSI file) for the [latest (pre-)release](https://github.com/Jetraw/Jetraw/releases).
 2. Run JetrawUI, either from the installer or from the start menu.
 
+**Note:** *please verify that the bin64 jetraw installation folder is included in the Environment System Variables (e.g. C:\Program Files\Jetraw\bin64). If not the UI app will not be able to find the necessary libraries to run.* 
+
 ### macOS installation
 1. Download macOS disk image (DMG file) for the [latest (pre-)release](https://github.com/Jetraw/Jetraw/releases).
 2. Open the disk image in Finder and drag `JetrawUI.app` onto the `Applications` folder. Launch JetrawUI from the Applications folder.
