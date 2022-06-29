@@ -77,7 +77,7 @@ target_include_directories(hello_jetraw PUBLIC
 target_link_libraries(hello_jetraw 
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/libdpcore.dylib 
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/libjetraw.dylib
-		${CMAKE_CURRENT_SOURCE_DIR}/lib/libjetraw_tiff.dylib)
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/libjetraw_tiff.dylib)
 ```
 
 Let's make sure everything builds correctly. Put this into your `main.cpp` to make sure CMake picks up the libraries:
@@ -89,8 +89,8 @@ Let's make sure everything builds correctly. Put this into your `main.cpp` to ma
 #include "jetraw/jetraw.h"
 
 int main() {
-		std::cout << "Hello Jetraw & DPCore" << '\n';
-		return 0;
+    std::cout << "Hello Jetraw & DPCore" << '\n';
+    return 0;
 }
 ```
 
@@ -138,53 +138,50 @@ Anyways, let's look at how the code might look like, don't worry if you don't un
 #include "jetraw_tiff/jetraw_tiff.h"
 
 int main() {
-	jetraw_tiff_init();
+    jetraw_tiff_init();
 	
-	/* Passing in an empty string will 
-	 * make Jetraw look in the default 
-   * path in which the license is located. */
-	jetraw_tiff_set_license("");
+    /* Passing in an empty string will 
+    * make Jetraw look in the default 
+    * path in which the license is located. */
+    jetraw_tiff_set_license("");
 	
-	/* Load calibration.dat */
-	dpcore_load_parameters("./calibration.dat");
+    /* Load calibration.dat */
+    dpcore_load_parameters("./calibration.dat");
 
-	/* ... load image buffer(s) ... 
+   /* ... load image buffer(s) ... 
    * imageBuffer is uninitialized here,
-	 * but make sure you set it accordingly.
-   * For the sake of this guide, we have skipped this part.
-   */
-	uint16_t *imageBuffer;
+   * but make sure you set it accordingly.
+   * For the sake of this guide, we have skipped this part. */
+   uint16_t *imageBuffer;
 
-	// Change this to fit your data.
-	uint32_t WIDTH = 2560; 
-	uint32_t HEIGHT = 2160; 
-	int32_t PIXELS = WIDTH * HEIGHT;
+   // Change this to fit your data.
+   uint32_t WIDTH = 2560; 
+   uint32_t HEIGHT = 2160; 
+   int32_t PIXELS = WIDTH * HEIGHT;
 	
 	
 
-	/* Prepare the TIFF image. 
+   /* Prepare the TIFF image. 
    * Change third parameter to fit your need.
-   * (how to get a calibration identifier is explained below.)
-   */
-	dpcore_embed_meta(imgBuffer, PIXELS, "calibration_identifier_here");
+   * (how to get a calibration identifier is explained below.) */
+   dpcore_embed_meta(imgBuffer, PIXELS, "calibration_identifier_here");
 
-	/* dp_tiff is a handle that helps you interact with the jetraw_tiff library */
-  dp_tiff* handle = nullptr;
+   /* dp_tiff is a handle that helps you interact with the jetraw_tiff library */
+   dp_tiff* handle = nullptr;
 
-	/* Open a new TIFF file to write compressed data to it. 
+   /* Open a new TIFF file to write compressed data to it. 
    * WARNING: If file already exists, 
-   * it will be immediately deleted and recreated.
-   */
-  jetraw_tiff_open(
-		"./test_compressed.tiff", 
-		WIDTH, HEIGHT, 
-    "This is a compressed TIFF file",
-    &handle,
-    "w"
-	);
+   * it will be immediately deleted and recreated. */
+   jetraw_tiff_open(
+       "./test_compressed.tiff", 
+       WIDTH, HEIGHT, 
+       "This is a compressed TIFF file",
+       &handle,
+       "w"
+    );
 
-	jetraw_tiff_append(handle, imageBuffer);
-	jetraw_tiff_close(&handle);  
+    jetraw_tiff_append(handle, imageBuffer);
+    jetraw_tiff_close(&handle);  
 }
 ```
 
@@ -196,12 +193,12 @@ As you might be able to tell, the way these libraries are designed is that their
 dp_status load_params = dpcore_load_parameters("./path/to/calibration.dat");
 
 if (load_params != dp_success) {
-	// Something went horribly wrong!
-	std::cerr
-		<< "[ERROR LOADING CALIBRATION FILE]: "
-		<< dp_status_description(load_params) << '\n';
+    // Something went horribly wrong!
+    std::cerr
+        << "[ERROR LOADING CALIBRATION FILE]: "
+        << dp_status_description(load_params) << '\n';
 
-	return 1; 
+    return 1; 
 }
 
 // Output if file does not exist:
@@ -248,7 +245,7 @@ If your TIFF file has multiple pages, this would be a good time to prepare them 
 
 ```cpp
 for (const auto& buf : imgBuffers) {
-		dpcore_embed_meta(buf, WIDTH * HEIGHT, "calibration_identifier");
+    dpcore_embed_meta(buf, WIDTH * HEIGHT, "calibration_identifier");
 }
 ```
 
@@ -333,8 +330,8 @@ uint32_t WIDTH = 2560;
 uint32_t HEIGHT = 2160;
 
 jetraw_tiff_open(
-		"./test_compressed.tiff", 
-		WIDTH, HEIGHT, 
+    "./test_compressed.tiff", 
+    WIDTH, HEIGHT, 
     "This is a compressed TIFF file",
     &handle,
     "w"
@@ -353,7 +350,7 @@ If your TIFF file has multiple pages, this would be a good time to add them all 
 
 ```cpp
 for (const auto& buf : imgBuffers) {
-		jetraw_tiff_append(handle, buf);
+    jetraw_tiff_append(handle, buf);
 }
 ```
 
@@ -380,14 +377,14 @@ int32_t dstLen = PIXELS / 2;
 std::unique_ptr<char[]> dstBuffer(new char[dstLen]);
 
 dp_status encoded = jetraw_encode(
-	imageBuffer, 
-	WIDTH, HEIGHT, 
-	dstBuffer.get(),
-	&dstLen
+    imageBuffer, 
+    WIDTH, HEIGHT, 
+    dstBuffer.get(),
+    &dstLen
 );
 
 if (encoded != dp_success) {
-	// ...
+    // ...
 }
 
 // Now that the operation is successful,
@@ -402,8 +399,8 @@ You cannot do much with a compressed file except store it somewhere, so in order
 
 ```cpp
 jetraw_tiff_open(
-		"./test_compressed.tiff", 
-		WIDTH, HEIGHT, 
+    "./test_compressed.tiff", 
+    WIDTH, HEIGHT, 
     "This is a compressed TIFF file",
     &handle,
     "r" // "r" stands for 'read'.
