@@ -113,6 +113,8 @@ Hello Jetraw & DPCore
 ```
 
 Great! Now you are all set up with your C++ project, it's now time to start exploring the functionality that Jetraw and DPCore have to offer.
+## Using Microsoft Visual Studio
+If you are using an IDE like Visual Studio, you could either load the folder with your `CMakeLists.txt` into Visual Studio and configure your Solution through it, as described [here.](https://docs.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170) Alternatively, you can set up a project in which you specify header and libraries manually, which you can absolutely do using this guide [here.](https://docs.microsoft.com/en-us/cpp/build/adding-references-in-visual-cpp-projects?view=msvc-170)
 
 ---
 
