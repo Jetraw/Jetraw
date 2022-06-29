@@ -147,7 +147,7 @@ Similar to macOS, Linux usually must be told where to look for the command line 
 # Development libraries
 Jetraw comes with libraries and header files that allow to integrate the functionality of `dpcore` and `jetraw` directly into your applications. For function descriptions, please have a look at the header files in the `include` subdirectory of the Jetraw installation.
 
-See the [C++ tutorial](./doc/c_tutorial.md) for more details.
+See the [C++ tutorial](./doc/c_tutorial.md) or the [Python tutorial](./doc/py_doc.md) for more details.
 
 # Wrappers and plugins
 The files written by JetrawUI, `dpcore` and `jetraw` are standard TIFF files. However, accessing the image data requires the TIFF reader to be aware of the installed Jetraw codec. To this end, we offer a number of wrapper modules and plugins for popular programming languages and imaging software. Please visit `https://jetraw.com/downloads/software` for a list, and let us know if you require integration with other software.
