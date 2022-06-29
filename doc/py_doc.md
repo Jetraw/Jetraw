@@ -289,14 +289,7 @@ To prepare and compress multi-page TIFF file you need to loop through the pages 
 ```python
 import jetraw, dpcore, tifffile
 
-# (option 1) Use .imread()
 image = tifffile.imread("many_pages.tiff")
-
-# (option 2) Use a Reader Object.
-with TiffReader("many_pages.tiff") as reader:
-    for page in range(reader.pages):
-        image = reader.read(page)
-        # do stuff with page.
 
 for page in range(image.shape[0]):
     dpcore.prepare_image(image[page][:][:])
