@@ -116,7 +116,7 @@ In the first and second line, we are importing `jetraw` and `dpcore` to gain acc
 locale.setlocale(locale.LC_ALL, locale.getlocale())
 ```
 
-Then, it's time to finally load an image. Loading an image is quite simple, all you have to to is call the `tifffile.imread()` function, supply it with a path to an unprepared TIFF file and it will give you back a `numpy.ndarray`, [which is a multidimensional container structure](https://numpy.org/doc/stable/reference/arrays.ndarray.html#:~:text=An%20ndarray%20is%20a%20(usually,the%20sizes%20of%20each%20dimension.) found in the `numpy` module we imported earlier. To enforce a data format that `dpcore` knows how to work with, we cast that array to the type `np.uint16` , in the end it all looks like that:
+Then, it's time to finally load an image. Loading an image is quite simple, all you have to to is call the `tifffile.imread()` function, supply it with a path to an unprepared TIFF file and it will give you back a `numpy.ndarray`, which is a multidimensional container structure found in the `numpy` module we imported earlier. To enforce a data format that `dpcore` knows how to work with, we cast that array to the type `np.uint16` , in the end it all looks like that:
 
 ```python
 image = tifffile.imread("path/to/tiffile.tiff").astype(np.uint16)
@@ -138,15 +138,15 @@ The easiest approach is opening Jetraw UI, loading in the calibration file and c
 
 First, open Jetraw UI and click on 'Devices':
 
-![Screenshot 2022-04-11 at 09.55.02.png](https://github.com/Jetraw/Jetraw/blob/doc/doc/figures/Screenshot_2022-04-11_at_09.55.02.png)
+![Screenshot 2022-04-11 at 09.55.02.png](./figures/Screenshot_2022-04-11_at_09.55.02.png)
 
 Then, load your calibration file by clicking 'INSTALL DAT FILE':
 
-![Screenshot 2022-04-11 at 09.55.15.png](https://github.com/Jetraw/Jetraw/blob/doc/doc/figures/Screenshot_2022-04-11_at_09.55.15.png)
+![Screenshot 2022-04-11 at 09.55.15.png](./figures/Screenshot_2022-04-11_at_09.55.15.png)
 
 Finally, if all goes well, at the top, a dropdown will appear, listing all the calibration identifiers (left column) and their respective settings:
 
-![Screenshot 2022-04-11 at 09.56.01.png](https://github.com/Jetraw/Jetraw/blob/doc/doc/figures/Screenshot_2022-04-11_at_09.56.01.png)
+![Screenshot 2022-04-11 at 09.56.01.png](./figures/Screenshot_2022-04-11_at_09.56.01.png)
 
 ### Option 2: Using the CLI
 
